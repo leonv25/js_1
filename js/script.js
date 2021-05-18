@@ -84,7 +84,6 @@ let appData = {
     }
 };
 
-
-for (let key in appData.income) {
-    console.log(appData.income);
+for (let key in appData) {
+    console.log('Наша програма включает в себя даные: ' + key + ' - ' + appData[key]);
 }
