@@ -2,7 +2,7 @@ let startBtn = document.getElementById('start'),
     budgetValue = document.getElementsByClassName ('budget-value')[0],
     daybudgetValue = document.getElementsByClassName('daybudget-value'),
     levelValue = document.getElementsByClassName('level-value'),
-    expensesValue = document.getElementsByClassName('expenses-value'),
+    expensesValue = document.getElementsByClassName('expenses-value')[0],
     optionalexpensesValue = document.getElementsByClassName('optionalexpenses-value'),
     incomeValue = document.getElementsByClassName('income-value'),
     monthsavingsValue = document.getElementsByClassName('monthsavings-value'),
@@ -31,12 +31,7 @@ let startBtn = document.getElementById('start'),
         while (isNaN(money) || money == "" || money == null) {
             money = +prompt ("Ваш бюджет на месяц?", ""); 
         }
-
-        expensesBtn.addEventListener('click', function() {
-            let sum = 0;
-
-        });
-
+       
         appData.budget = money;
         appData.timeData = time;
 
@@ -45,6 +40,27 @@ let startBtn = document.getElementById('start'),
         monthValue.value = new Date(Date.parse(time)).getMonth() + 1;
         dayValue.value = new Date(Date.parse(time)).getDate();
 
+    });
+
+    expensesBtn.addEventListener('click', function() {
+        let sum = 0;
+
+        for (let i = 0; i < expensesItem.length; i++) {
+            let a = expensesItem[i].value,
+                b = expensesItem[++i].value;
+        
+            if ( (typeof(a))==='string' && (typeof(a)) != null && (typeof(b)) != null && a != "" && b != "" && a.length < 50) {
+        
+                console.log ("done");
+        
+                appData.expenses[a] = b;
+                sum += +b;
+                expensesValue.textContent = sum;
+            } else {
+                console.log ("bad result");
+                i--;
+            }
+        }
     });
     
     
@@ -56,22 +72,7 @@ let startBtn = document.getElementById('start'),
         optionalExpenses: {},
         income: [],
         savings: true,
-        chooseExpenses: function () {
-            for (let i = 0; i < 2; i++) {
-                let a = prompt ("Введите обязательную статью расходов в этом месяце", ""),
-                    b = prompt ("Во сколько обойдется?", "");
-            
-                if ( typeof(a)==='string' && typeof(a) != null && typeof(b) != null && a != "" && b != "" && a.length < 50) {
-            
-                    console.log ("done");
-            
-                    appData.expenses[a] = b;
-                } else {
-                    console.log ("bad result");
-                    i--;
-                }
-            }
-        },
+        
         detectDayBudget: function () {
             appData.moneyPerDay = (appData.budget / 30).toFixed();
             alert ("Бюджет на 1 день составляет " + appData.moneyPerDay + "руб.");
@@ -125,4 +126,4 @@ let startBtn = document.getElementById('start'),
     //     console.log("Наша программа включает в себя данные: " + key + " - " + appData[key]);
     // }
 
-    console.log(yearValue);
+    console.log(expensesValue.textContent = sum);
