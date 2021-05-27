@@ -61,9 +61,18 @@ let startBtn = document.getElementById('start'),
                 i--;
             }
         }
+        expensesValue.textContent = sum;
     });
     
-    
+    optionalExpensesBtn.addEventListener('click', function() {
+        let sum = 0;
+        for (let i = 0; i < optionalExpensesItem.length; i++) {
+            let opt = optionalExpensesItem[i].value;
+            appData.optionalExpenses[i] = opt;
+            optionalExpensesItem.textContent += appData.optionalExpensesItem[i] + '';
+        }
+
+    });
 
     let appData = {
         budget: money,
@@ -126,4 +135,4 @@ let startBtn = document.getElementById('start'),
     //     console.log("Наша программа включает в себя данные: " + key + " - " + appData[key]);
     // }
 
-    console.log(expensesValue.textContent = sum);
+    console.log(optionalExpensesBtn);
