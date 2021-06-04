@@ -3,7 +3,7 @@ let startBtn = document.getElementById('start'),
     daybudgetValue = document.getElementsByClassName('daybudget-value'),
     levelValue = document.getElementsByClassName('level-value'),
     expensesValue = document.getElementsByClassName('expenses-value')[0],
-    optionalexpensesValue = document.getElementsByClassName('optionalexpenses-value'),
+    optionalexpensesValue = document.getElementsByClassName('optionalexpenses-value')[0],
     incomeValue = document.getElementsByClassName('income-value'),
     monthsavingsValue = document.getElementsByClassName('monthsavings-value'),
     yearsavingsValue = document.getElementsByClassName('yearsavings-value'),
@@ -65,14 +65,19 @@ let startBtn = document.getElementById('start'),
     });
     
     optionalExpensesBtn.addEventListener('click', function() {
-        let sum = 0;
+       
         for (let i = 0; i < optionalExpensesItem.length; i++) {
             let opt = optionalExpensesItem[i].value;
             appData.optionalExpenses[i] = opt;
-            optionalExpensesItem.textContent += appData.optionalExpensesItem[i] + '';
+            optionalexpensesValue.textContent = opt + ' ';
+            
         }
-
     });
+
+    console.log(optionalExpensesItem);
+    console.log(optionalexpensesValue);
+
+    
 
     let appData = {
         budget: money,
@@ -135,4 +140,4 @@ let startBtn = document.getElementById('start'),
     //     console.log("Наша программа включает в себя данные: " + key + " - " + appData[key]);
     // }
 
-    console.log(optionalExpensesBtn);
+    
